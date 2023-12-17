@@ -1,0 +1,23 @@
+@import './../../scss/variables.scss';
+
+.data-wrap {
+  gap: 36px;
+
+  @media (max-width: $screen-sm) {
+    gap: 20px;
+  }
+}
+
+.empty {
+  margin: auto;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.alert {
+  margin-top: 16px;
+}

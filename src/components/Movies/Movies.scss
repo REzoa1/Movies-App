@@ -1,0 +1,30 @@
+@import './../../scss/variables.scss';
+
+.tabs {
+  background-color: #fff;
+  text-align: center;
+
+  max-width: 1010px;
+  min-height: calc(100vh - 60px);
+  height: 100%;
+
+  margin: 20px auto;
+  padding: 20px 35px;
+
+  @media (max-width: $screen-sm) {
+    padding: 15px 4%;
+    margin: auto;
+  }
+}
+
+.ant-tabs-tabpane > *:not(:first-child) {
+  padding-top: 32px;
+
+  @media (max-width: $screen-sm) {
+    padding-top: 10px;
+  }
+}
+
+.ant-tabs-tabpane > *:not(:first-child) {
+  padding-top: 32px;
+}

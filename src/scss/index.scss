@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+body {
+  background-color: #f7f7f7;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+body::before {
+  content: '';
+  overflow: hidden;
+  display: block;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 20px;
+
+  @media (max-width: $screen-sm) {
+    height: auto;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
