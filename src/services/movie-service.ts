@@ -38,9 +38,8 @@ export default class MovieService {
     const queryParams = `?api_key=${apiKey}&guest_session_id=${this.guestId}&query=${query}`
     const res = await this.getResource(`/search/movie${queryParams}`)
     this.query = query
-    this.isChanged = [false, this.isChanged[1]]
 
-    const lsData = res && getFromLs(res)
+    const lsData = res && getFromLs(res.results)
     this.allMovies = { total: res.total_results, movies: lsData, page: res.page }
     return lsData
   }
@@ -57,7 +56,7 @@ export default class MovieService {
     const res = await this.getResource(`/search/movie${queryParams}`)
     this.isChanged = [false, this.isChanged[1]]
 
-    const lsData = res && getFromLs(res)
+    const lsData = res && getFromLs(res.results)
     this.allMovies = { total: res.total_results, movies: lsData, page: res.page }
     return lsData
   }

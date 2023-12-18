@@ -53,7 +53,7 @@ class MovieItem extends Component<Props, State> {
     }
 
     const newRatedMovie = { id, rating: value }
-    const filteredMovies = lsData.filter((a: LsDataType) => a.id !== id)
+    const filteredMovies = lsData.filter((m: LsDataType) => m.id !== id)
     const ratedMovies = value === 0 ? filteredMovies : [...filteredMovies, newRatedMovie]
 
     localStorage.setItem('ratedMovies', JSON.stringify(ratedMovies))

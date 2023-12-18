@@ -1,30 +1,28 @@
 import { format } from 'date-fns'
 
-import { MovieType, ResponseType } from '../models'
+import { MovieType } from '../models'
 
 const cn = (...classes: Array<boolean | string>) => [...classes].filter(Boolean).join(' ')
 
-const getFromLs = (res: ResponseType) => {
+const getFromLs = (movies: Array<MovieType>) => {
   const lsData = localStorage?.getItem('ratedMovies') ? JSON.parse(localStorage?.getItem('ratedMovies') || '') : []
 
   const ratedMovies = [] as Array<MovieType>
 
   if (lsData.length) {
-    res.results.forEach((a: MovieType) => {
+    movies.forEach((m: MovieType) => {
       lsData.forEach(({ id, rating }: MovieType) => {
-        if (a.id === id) {
-          if (!ratedMovies.some((c: MovieType) => a.id === c.id)) {
-            ratedMovies.push({ ...a, rating })
-          }
+        if (m.id === id && !ratedMovies.some((r: MovieType) => m.id === r.id)) {
+          ratedMovies.push({ ...m, rating })
         }
       })
-      if (!ratedMovies.some((c: MovieType) => a.id === c.id)) {
-        ratedMovies.push(a)
+      if (!ratedMovies.some((r: MovieType) => m.id === r.id)) {
+        ratedMovies.push(m)
       }
     })
   }
 
-  return ratedMovies.length ? ratedMovies : res.results
+  return ratedMovies.length ? ratedMovies : movies
 }
 
 const setLsGuestId = async (cb: () => Promise<string>, onError: () => void) => {
