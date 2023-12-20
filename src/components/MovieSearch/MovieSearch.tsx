@@ -32,8 +32,13 @@ class MovieSearch extends Component<Props, State> {
   }
 
   onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: e.target.value })
-    this.sendQuery(e.target.value)
+    const { query } = this.context
+    const value = e.target.value.trim()
+    this.setState({ value })
+
+    if (value || (query !== 'return' && !e.target.value)) {
+      this.sendQuery(value)
+    }
   }
 
   render() {

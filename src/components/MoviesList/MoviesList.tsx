@@ -43,6 +43,8 @@ function MoviesList({ moviesData, isLoading, hasError, onChange }: Props) {
     <Alert className="alert" showIcon message="Error" description="Ooops... Something went wrong." type="error" />
   )
 
+  const isEnoughMovies = page !== 1 || (page === 1 && total > 20)
+
   return (
     <>
       {hasError ? (
@@ -53,7 +55,7 @@ function MoviesList({ moviesData, isLoading, hasError, onChange }: Props) {
         </Flex>
       )}
 
-      {!hasError && !isLoading && movies.length !== 0 && (
+      {!hasError && !isLoading && isEnoughMovies && (
         <Pagination
           showSizeChanger={false}
           defaultPageSize={20}
